@@ -16,7 +16,8 @@ ADD https://github.com/validator/validator/releases/download/16.6.29/vnu.jar_16.
 RUN unzip -d /opt/ /opt/vnu.jar_*.zip
 
 COPY validate /usr/bin
+COPY validate-pedantic /usr/bin
 
-# By default, run the validate script on the current
-# working directory
-CMD [ "/usr/bin/validate", "./" ]
+# By default, run the validate-pedantic script
+# on the current working directory
+CMD [ "/usr/bin/validate-pedantic", "./" ]

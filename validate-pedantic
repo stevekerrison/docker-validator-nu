@@ -1,0 +1,14 @@
+#!/bin/bash
+
+/usr/bin/validate "$@" > /tmp/validator-output 2>&1
+
+# Check for non-empty file
+if test -s /tmp/validator-output ; then
+	# Output the file to stdout
+	cat /tmp/validator-output
+	# exit nonzero
+	exit 1
+else
+	# No output, exit zero
+	exit 0
+fi
