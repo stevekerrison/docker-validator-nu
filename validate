@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec java -jar /opt/dist/vnu.jar --skip-non-html "$@"
