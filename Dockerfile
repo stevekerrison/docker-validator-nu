@@ -15,6 +15,4 @@ RUN curl -s https://api.github.com/repos/validator/validator/releases/latest | j
 COPY validate /usr/bin
 COPY validate-pedantic /usr/bin
 
-# By default, run the validate-pedantic script
-# on the current working directory
-CMD [ "/usr/bin/validate-pedantic", "./" ]
+CMD validate-pedantic /code
