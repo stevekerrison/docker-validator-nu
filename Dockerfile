@@ -1,5 +1,5 @@
-FROM debian:jessie-backports
-MAINTAINER Danny Edel <mail@danny-edel.de>
+FROM ubuntu:18.04
+MAINTAINER Steve Kerrison <steve@usec.io>
 
 # Packs the HTML5 validator.nu from
 # https://github.com/validator/validator
@@ -8,12 +8,9 @@ MAINTAINER Danny Edel <mail@danny-edel.de>
 # RUN sed -i -e 's|httpredir.debian.org|ftp.us.debian.org|g' /etc/apt/sources.list
 
 RUN apt-get update && \
-	apt-get -y install openjdk-8-jre unzip
+	apt-get -y install openjdk-11-jre-headless unzip jq curl
 
-# FIXME: Keep this URL up to date
-ADD https://github.com/validator/validator/releases/download/16.6.29/vnu.jar_16.6.29.zip /opt/
-
-RUN unzip -d /opt/ /opt/vnu.jar_*.zip
+RUN curl -s https://api.github.com/repos/validator/validator/releases/latest | jq --raw-output '.assets[0].browser_download_url' | xargs curl -L > vnu.zip && unzip -d /opt vnu.zip
 
 COPY validate /usr/bin
 COPY validate-pedantic /usr/bin
