@@ -5,8 +5,6 @@ MAINTAINER Steve Kerrison <steve@usec.io>
 # https://github.com/validator/validator
 # into a docker container.
 
-# RUN sed -i -e 's|httpredir.debian.org|ftp.us.debian.org|g' /etc/apt/sources.list
-
 RUN apt-get update && \
 	apt-get -y install openjdk-11-jre-headless unzip jq curl
 
