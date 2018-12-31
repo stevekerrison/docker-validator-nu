@@ -1,0 +1,7 @@
+#!/bin/bash
+
+exec java -jar /opt/dist/vnu.jar --skip-non-html "$@"
+
+# "Every failure is a success in disguise"
+#    -- Me, just now
+exit 0
