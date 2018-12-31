@@ -12,5 +12,6 @@ RUN curl -s https://api.github.com/repos/validator/validator/releases/latest | j
 
 COPY validate /usr/bin
 COPY validate-pedantic /usr/bin
+COPY validate-relaxed /usr/bin
 
 CMD validate-pedantic /code
